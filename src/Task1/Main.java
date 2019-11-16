@@ -14,9 +14,11 @@ public class Main {
         while (true) {
             input = in.nextLine();
             if (input.equals("exit")) return;
-            String[] www = input.split("[+-/X]");
+            String[] www = new String[2];
+            www = input.split("[^0-9]");
             double res = 0;
             try {
+                if (www[1] == null) throw new NotMOrNException("Что здесь пишется?");
                 double a = parseInt(www[0]);
                 double b = parseInt(www[1]);
                 if (a % 1 > 0 || b % 1 > 0) throw new MOrNIsNotInt("Что здесь пишется?");
@@ -34,6 +36,8 @@ public class Main {
                 System.out.println("Введены не целые числа");
             } catch (OperatorException g) {
                 System.out.println("Не верный оператор");
+            } catch (NotMOrNException g) {
+                System.out.println("Отсутствует второе число");
             }
         }
     }
