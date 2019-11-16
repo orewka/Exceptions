@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
 public class Main {
@@ -18,9 +19,11 @@ public class Main {
             www = input.split("[^0-9]");
             double res = 0;
             try {
+                // почему-то не срабатывает
                 if (www[1] == null) throw new NotMOrNException("Что здесь пишется?");
-                double a = parseInt(www[0]);
-                double b = parseInt(www[1]);
+                double a = parseDouble(www[0]);
+                double b = parseDouble(www[1]);
+                // тоже нет
                 if (a % 1 > 0 || b % 1 > 0) throw new MOrNIsNotInt("Что здесь пишется?");
                 if (input.contains("+")) res = a + b;
                 else if (input.contains("-")) res = a - b;
