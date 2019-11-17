@@ -16,11 +16,13 @@ public class Main {
     public static void main(String[] args) {
         try {
             throwException(Status.FILE_NOT_FOUND);
+            throwException(Status.ACCESS_DENIED);
+            throwException(Status.JAR_ERROR);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (AccessDeniedException e) {
             e.getMessage();
-            throw new ???;
+          //  throw new ???;
         } catch (JarException e) {
             e.printStackTrace();
         }
