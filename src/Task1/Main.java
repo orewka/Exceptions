@@ -20,27 +20,21 @@ public class Main {
             double res = 0;
             try {
                 // почему-то не срабатывает
-                if (www[1] == null) throw new NotMOrNException("Что здесь пишется?");
+                if (www[1] == null) throw new NotMOrNException("Отсутствует второе число");
                 double a = parseDouble(www[0]);
                 double b = parseDouble(www[1]);
                 // тоже нет
-                if (a % 1 > 0 || b % 1 > 0) throw new MOrNIsNotInt("Что здесь пишется?");
+                if (a % 1 > 0 || b % 1 > 0) throw new MOrNIsNotInt("Введены не целые числа");
                 if (input.contains("+")) res = a + b;
                 else if (input.contains("-")) res = a - b;
                 else if (input.contains("X")) res = a * b;
                 else if (input.contains("/")) {
-                    if (a == 0 || b == 0) throw new DivisionByZeroException("Что здесь пишется?");
+                    if (a == 0 || b == 0) throw new DivisionByZeroException("Деление на ноль");
                     else res = a / b;
-                } else throw new OperatorException("Что здесь пишется?");
+                } else throw new OperatorException("Не верный оператор");
                 System.out.println((int) res);
-            } catch (DivisionByZeroException g) {
-                System.out.println("Деление на ноль");
-            } catch (MOrNIsNotInt g) {
-                System.out.println("Введены не целые числа");
-            } catch (OperatorException g) {
-                System.out.println("Не верный оператор");
-            } catch (NotMOrNException g) {
-                System.out.println("Отсутствует второе число");
+            } catch (DivisionByZeroException | MOrNIsNotInt | OperatorException | NotMOrNException g) {
+                System.out.println(g.getMessage());
             }
         }
     }

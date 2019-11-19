@@ -68,7 +68,7 @@ public class Main {
         } catch (Exception e) {
             exceptionList.add(e);
         }
-        System.out.println(exceptionList.size());
+        System.out.println(exceptionList.size(  ));
     }
 }
 

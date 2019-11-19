@@ -6,9 +6,9 @@ import java.util.jar.JarException;
 
 public class Main {
     static void throwException(Status status) throws JarException, FileNotFoundException, AccessDeniedException {
-        if (status.equals(Status.FILE_NOT_FOUND)) throw new FileNotFoundException();
-        if (status.equals(Status.ACCESS_DENIED)) throw new AccessDeniedException("Что тут?");
-        if (status.equals(Status.JAR_ERROR)) throw new JarException();
+        if (status.equals(Status.FILE_NOT_FOUND)) throw new FileNotFoundException("Файл отсутствует");
+        if (status.equals(Status.ACCESS_DENIED)) throw new AccessDeniedException("Доступ запрещен");
+        if (status.equals(Status.JAR_ERROR)) throw new JarException("Ошибка расширения");
 
 
     }
@@ -21,8 +21,12 @@ public class Main {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (AccessDeniedException e) {
-            e.getMessage();
-          //  throw new ???;
+            try {
+                System.out.println(e.getMessage());;
+                throw new AccessDeniedException("Доступ запрещен");
+            } catch (AccessDeniedException e1) {
+                e1.printStackTrace();
+            }
         } catch (JarException e) {
             e.printStackTrace();
         }
