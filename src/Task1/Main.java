@@ -16,14 +16,12 @@ public class Main {
             input = in.nextLine();
             if (input.equals("exit")) return;
             String[] www = new String[2];
-            www = input.split("[^0-9]");
+            www = input.split("[^0-9.]");
             double res = 0;
             try {
-                // почему-то не срабатывает
-                if (www[1] == null) throw new NotMOrNException("Отсутствует второе число");
+                if (www.length == 1) throw new NotMOrNException("Отсутствует второе число");
                 double a = parseDouble(www[0]);
                 double b = parseDouble(www[1]);
-                // тоже нет
                 if (a % 1 > 0 || b % 1 > 0) throw new MOrNIsNotInt("Введены не целые числа");
                 if (input.contains("+")) res = a + b;
                 else if (input.contains("-")) res = a - b;
